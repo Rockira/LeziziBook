@@ -1,0 +1,65 @@
+<idea-plugin>
+  <!-- 插件唯一id，不能和其他插件项目重复，所以推荐使用com.xxx.xxx的格式
+     插件不同版本之间不能更改，若没有指定，则与插件名称相同 -->
+  <id>cn.roc.plugin.lezizibook.id</id>
+
+  <!-- 插件名称，别人在官方插件库搜索你的插件时使用的名称 -->
+  <name>LeziziBook</name>
+
+  <!-- 插件版本号 -->
+  <version>1.0</version>
+
+  <!-- 供应商主页和email（不能使用默认值，必须修改成自己的）-->
+  <vendor email="1099543830@qq.com" url="https://github.com/Rockira/SpringBoot-master">Roc</vendor>
+
+  <!-- 插件的描述 （不能使用默认值，必须修改成自己的。并且需要大于40个字符）-->
+  <description>
+    It allows you to read novels on your local hard drive and get a reading experience like a Kindle. It can remember your reading progress like a bookmark, so that you can continue to read next time, and provides page turning function.
+    instructions:
+    1. You need to prepare an e-book
+    2. Search lezizibook in setting for basic information setting
+    3. You can read e-books in the side window of IDE
+    <![CDATA[<br><em>touch fish</em>]]>
+  </description>
+
+  <!-- 插件版本变更信息，支持HTML标签；
+       将展示在 settings | Plugins 对话框和插件仓库的Web页面 -->
+  <change-notes>
+    <![CDATA[
+     New left and right quick page turning function<br>
+      <em>txt </em>
+    ]]>
+  </change-notes>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <!-- 插件兼容IDEAbuild 号-->
+  <idea-version since-build="173.0"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <!-- 插件所依赖的其他插件的id -->
+  <!-- uncomment to enable plugin in all products  -->
+  <depends>com.intellij.modules.lang</depends>
+
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- 声明该插件对IDEA core或其他插件的扩展 -->
+    <!-- Add your extensions here -->
+    <projectConfigurable groupId="tools" displayName="LeziziBook Config" id="lezizi.id"
+                         instance="cn.roc.plugin.lezizibook.factory.SettingConfigFactory"/>
+    <applicationService serviceInterface="cn.roc.plugin.lezizibook.service.PersistentState"
+                        serviceImplementation="cn.roc.plugin.lezizibook.service.PersistentState"/>
+
+    <toolWindow id="LeziziBook" secondary="true" anchor="right"
+                factoryClass="cn.roc.plugin.lezizibook.factory.ReadWindowFactory">
+
+    </toolWindow>
+  </extensions>
+
+  <!-- 编写插件动作 -->
+  <actions>
+    <!-- Add your actions here -->
+
+  </actions>
+
+</idea-plugin>
